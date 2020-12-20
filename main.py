@@ -7,11 +7,11 @@ screen = pygame.display.set_mode((920, 680))
 
 # Title and Icon
 pygame.display.set_caption("SpaceRevengers")
-icon = pygame.image.load('logo.png')
+icon = pygame.image.load('public/logo.png')
 pygame.display.set_icon(icon)
 
 # Player revenger
-playerImg = pygame.image.load('revenger.png')
+playerImg = pygame.image.load('public/revenger.png')
 playerX = 450
 playerY = 550
 
@@ -22,7 +22,7 @@ def player(x, y):
 
 # Alien
 
-alienImg = pygame.image.load('alien.png')
+alienImg = pygame.image.load('public/alien.png')
 aleinY = []
 aleinX = []
 aleinX_change = []
@@ -43,7 +43,7 @@ def alein(x, y):
 bulletX = 0
 bulletY = 550
 bullet_state = "Ready"
-bulletImg = pygame.image.load('light-bolt.png')
+bulletImg = pygame.image.load('public/light-bolt.png')
 
 
 def bullet(x, y):
@@ -61,8 +61,8 @@ def Collision(aleinX, aleinY, bulletX, bulletY):
 
 def main():
     global bullet_state, bulletY, bulletX, playerX, playerY, aleinX, aleinY, aleinX_change, no_of_alien
-    background = pygame.image.load('background.jpg')
-    mixer.music.load('background.wav')
+    background = pygame.image.load('public/background.jpg')
+    mixer.music.load('public/background.wav')
     mixer.music.play(-1)
     playerX_change = 0
     score = 0
@@ -84,7 +84,7 @@ def main():
                     playerX_change = 0
                 # Triggering Bullet
                 if event.key == pygame.K_SPACE and bullet_state == "Ready":
-                    mixer.Sound('laser.wav').play()
+                    mixer.Sound('public/laser.wav').play()
                     bulletX = playerX
                     bullet(bulletX, bulletY)
             if event.type == pygame.KEYUP:
@@ -117,7 +117,7 @@ def main():
             # Collision
             aleindeath = Collision(aleinX[i], aleinY[i], bulletX, bulletY)
             if aleindeath:
-                mixer.Sound('explosion.wav').play()
+                mixer.Sound('public/explosion.wav').play()
                 bulletY = 550
                 bullet_state = "Ready"
                 score += 1
